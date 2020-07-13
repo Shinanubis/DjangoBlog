@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <img src="{{ article.cover.url }}">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+    <p>Créer le: {{ article.created_at}} par : {{ article.author }}</p>
+
+    <br><br><br>
+    <h3> add a comment</h3>
+    <br>
+    {% if envoi %}Votre message a bien été envoyé !{% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+    <h3>Comments: </h3>
+    <ul>
+        {% for comment in comments_list %}
+            {% if comment.related_paper|slugify == article.title|slugify %}
+                <li>
+                    <h5>{{ comment.author }}</h5>
+                    <p><strong>{{ comment.content }}</strong></p>
+                    <p>le {{ comment.created_at }}</p>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
