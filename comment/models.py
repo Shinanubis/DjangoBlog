@@ -23,4 +23,4 @@ class Comment(models.Model):
 class AddComment(ModelForm):
     class Meta:
         model = Comment
-        fields = ['content']
+        fields = ['content', 'related_paper', 'author']

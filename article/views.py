@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Article
 from comment.models import Comment, AddComment
 
@@ -12,6 +12,11 @@ def index(req):
 def detail(req, article_id):
     article = get_object_or_404(Article, pk=article_id)
     form = AddComment
+    if req.method == 'POST':
+        form = AddComment(req.POST)
+        if form.is_valid():
+            form.save()
+            redirect('/details.html')
     comments_list = Comment.objects.order_by('-created_at')
     context = {'article': article, 'comments_list': comments_list, 'form': form}
     return render(req, 'article/details.html', context)
