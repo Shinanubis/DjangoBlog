@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from .models import Article
-from comment.models import Comment
-from comment.forms import AddComment
+from comment.models import Comment, AddComment
 
 
 def index(req):

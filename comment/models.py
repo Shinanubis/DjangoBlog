@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from article.models import Article
+from django.forms import ModelForm
 
 
 class Comment(models.Model):
@@ -18,3 +19,8 @@ class Comment(models.Model):
             self.created_at = timezone.now()
         return super(Comment, self).save(*args, **kwargs)
 
+
+class AddComment(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']

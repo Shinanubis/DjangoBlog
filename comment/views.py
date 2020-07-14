@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from comment.forms import AddComment
+from comment.models import AddComment
 
 
 def addcomment(req):
