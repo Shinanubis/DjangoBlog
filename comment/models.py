@@ -24,4 +24,6 @@ class AddComment(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['content', 'related_paper', 'author']
-        widgets = {'related_paper': forms.HiddenInput()}
+        widgets = {'related_paper': forms.HiddenInput(),
+                   'author': forms.HiddenInput()
+                   }
