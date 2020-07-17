@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if feed_list %}
+    <ul>
+    {% for feed in feed_list %}
+        <li><a href="{{ feed.get_absolute_url }}">{{ feed.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+<form action="." method="post">
+    <table>{{ form }}</table>
+    <input type="submit" class="send" name="send" value="Ajouter" />
+</form>
+</body>
+</html>

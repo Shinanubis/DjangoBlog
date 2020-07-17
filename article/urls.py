@@ -9,5 +9,5 @@ urlpatterns = [
     # ex: /article/
     path('', views.index, name='index'),
     # ex: /article/5/
-    path('<article_id>/', views.detail, name='detail'),
+    path('<article_id><article_title>/', views.detail, name='detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
