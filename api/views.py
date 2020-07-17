@@ -9,3 +9,9 @@ def get_article(req):
     article = Article.objects.all().values()
     article_list = list(article)
     return JsonResponse(article_list, safe=False)
+
+
+def get_article_filter_by(req, article_id):
+    article = Article.objects.filter(category=article_id).values()
+    article_list = list(article)
+    return JsonResponse(article_list, safe=False)
