@@ -12,8 +12,10 @@ def index(req):
 
 def detail(req, article_id):
     article = get_object_or_404(Article, pk=article_id)
-    user = User.objects.get(username=req.user.username)
-    form = AddComment(initial={
+    form = AddComment
+    if req.user.is_authenticated:
+        user = User.objects.get(username=req.user.username)
+        form = AddComment(initial={
                                 'author': getattr(user, 'username'),
                                 'related_paper': getattr(article, 'title')
                               }, auto_id=False)
