@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from autoslug import AutoSlugField
 
 
 class Category(models.Model):
@@ -12,7 +13,7 @@ class Category(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=50)
+    slug = AutoSlugField(populate_from='title')
     author = models.ForeignKey(User, on_delete=False)
     category = models.ForeignKey(Category, on_delete=False)
     content = models.TextField()
