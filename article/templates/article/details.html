@@ -19,6 +19,8 @@
             {{ form.as_p }}
             <input type="submit" value="Submit" />
         </form>
+    {% else %}
+        <p>For post comment please login</p>
     {% endif %}
     <h3>Comments: </h3>
     <ul>
